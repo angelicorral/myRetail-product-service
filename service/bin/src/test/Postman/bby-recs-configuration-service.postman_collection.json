@@ -1,0 +1,914 @@
+{
+	"info": {
+		"_postman_id": "a6dcbbe4-a4a2-4df6-9dc4-5a49119296d9",
+		"name": "bby-recs-configuration-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Valid GET Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a25c0e9-29f6-4b1c-9d32-3c433bad38a6",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid GET Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "932308a6-28fe-4a32-a539-941d0d54949b",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"Missing Placement\"] = data.message = \"No configurations found for key dotcom-l of type placement\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid GET Title Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0e473767-a695-4fda-abf6-0aa0b0d4adf5",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/title?key=dotcom-l_ghp_ab_1.0",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"title"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp_ab_1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid GET Title Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c40edf14-bcd1-4c49-8621-cd2fa87ee8ac",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"Missing dataset and version\"] = data.message = \"No configurations found for key dotcom-l_ghp of type title\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/title?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"title"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid GET Sku Exclusion Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9bc7019-40c0-4ebf-a462-a96a3ab9c371",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/skuExclusion?key=ab",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"skuExclusion"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "ab"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid GET Sku Exclusion Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "156ec6de-ee4b-4f1e-8fdb-15197fb44abd",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"Missing dataset and version\"] = data.message = \"No configurations found for key badDataset of type skuExclusion\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/skuExclusion?key=badDataset",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"skuExclusion"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "badDataset"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid GET - Missing key parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "76958604-080a-4192-8a50-15f05df3fb4f",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"Missing Key Parameter\"] = data.message = \"Required String parameter 'key' is not present\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid GET - Empty key parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb04af87-6514-4293-80f0-2ed5a256b712",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"Missing Key Parameter\"] = data.message = \"Required variable 'key' cannot be empty\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Configuration Type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98dbffce-29c4-415e-8bd0-0d34e9b34362",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"message\"]= data.message === \"Invalid configuration type badConfigType\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/badConfigType?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"badConfigType"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid DELETE Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aae95830-965f-4249-9780-c6490f5da3e2",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid DELETE Title Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31104a90-38bb-497b-8762-bb8f9db214d3",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/title?key=dotcom-l_ghp_ab_1.0",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"title"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp_ab_1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid DELETE Sku Exclusion Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74cb223c-45e4-4ca5-a560-39d727487c4f",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/skuExclusion?key=ab",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"skuExclusion"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "ab"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing key - Invalid DELETE Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f1f64779-77e4-4a9b-9938-049431fccdd6",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"message\"]= data.message === \"Required String parameter 'key' is not present\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid DELETE - Type does not exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1f5bf6df-9353-4892-96ec-51389e184671",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"message\"]= data.message === \"Invalid configuration type invalidConfigurationType\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/invalidConfigurationType?key=ab",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"invalidConfigurationType"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "ab"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid PATCH Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a281e6ad-0f17-456b-afcc-d6b401cb11cb",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"site\": \"dotcom-l\",\n\t\"placement\": \"ghp\",\n    \"configuredDatasetVersions\" : [\"ab_3.0\", \"rv_3.0\"],\n    \"configuredTrainingParameters\": [\"site\", \"placement\", \"dataset\", \"version\"],\n    \"configuredRefinements\":[\"pof\", \"osf\", \"dbf\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid PATCH Title Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "448de6d4-1886-46d5-812d-a10833ae8b51",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"People also bought PATCHED\"\n}"
+				},
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/title?key=dotcom-l_ghp_ab_1.0",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"title"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp_ab_1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid PATCH Sku Exclusion Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32f50b9a-5848-46ae-8f14-ab5a271b127b",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"skus\": [\"sku1\", \"sku2\", \"sku3\", \"sku4\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/skuExclusion?key=ab",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"skuExclusion"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "ab"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Request Body - Invalid PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6baf347e-4bdf-432b-b5c2-80de2b334c68",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty Request Body - Invalid PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d91478ad-9d23-4e63-af2f-f84049551cc8",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"message\"]= data.message === \"Configuration is not valid\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n}"
+				},
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Added Field - Invalid PATCH Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8804df8b-d2cc-45be-a3ee-3a5e2f55edfa",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"message\"]= data.message === \"Cannot proceed with patch operation. Unknown or invalid field encountered in request: {\\\"site\\\":\\\"dotcom-l\\\",\\\"placement\\\":\\\"ghp\\\",\\\"configuredDatasetVersions\\\":[\\\"ab_3.0\\\",\\\"rv_3.0\\\"],\\\"configuredTrainingParameters\\\":[\\\"site\\\",\\\"placement\\\",\\\"dataset\\\",\\\"version\\\"],\\\"configuredRefinements\\\":[\\\"pof\\\",\\\"osf\\\",\\\"dbf\\\"],\\\"extraField\\\":\\\"lalalalal\\\"}\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"site\": \"dotcom-l\",\n\t\"placement\": \"ghp\",\n    \"configuredDatasetVersions\" : [\"ab_3.0\", \"rv_3.0\"],\n    \"configuredTrainingParameters\": [\"site\", \"placement\", \"dataset\", \"version\"],\n    \"configuredRefinements\":[\"pof\", \"osf\", \"dbf\"],\n    \"extraField\": \"lalalalal\"\n}"
+				},
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Field in Request Body - Invalid PATCH Placement Configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "618f75c0-7ab9-4f5c-b159-3334538b0721",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"failure\"]= data.state === \"FAILURE\";",
+							"tests[\"message\"]= data.message === \"Configuration is not valid\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"site\": \"dotcom-l\",\n\t\"placement\": \"ghp\",\n    \"configuredDatasetVersions\" : [\"ab_3.0\", \"rv_3.0\"],\n    \"configuredRefinements\":[\"pof\", \"osf\", \"dbf\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{configuration.service}}/v1/configurations/placement?key=dotcom-l_ghp",
+					"protocol": "https",
+					"host": [
+						"{{configuration.service}}"
+					],
+					"path": [
+						"v1",
+						"configurations",
+						"placement"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "dotcom-l_ghp"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

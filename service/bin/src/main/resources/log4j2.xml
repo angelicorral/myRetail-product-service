@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" packages="com.bestbuy.recs.spring.logging">
+  <Properties>
+    <Property name="APP_NAME">configuration-service</Property>
+  </Properties>
+  <Appenders>
+    <Console name="application-console-appender" target="SYSTEM_OUT">
+      <UniqueMessageFilter expirationInSeconds="10" />
+      <PatternLayout pattern="${APP_NAME} APP date=%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ},level=%p,xRequestId=%X{X-B3-TraceId},thread=%t,category=%c,message=%m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <AsyncLogger name="com.bestbuy.recs" level="DEBUG" />
+    <AsyncRoot level="WARN">
+      <AppenderRef ref="application-console-appender"/>
+    </AsyncRoot>
+  </Loggers>
+</Configuration>
