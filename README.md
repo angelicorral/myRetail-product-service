@@ -10,7 +10,7 @@ myRetail Product Service is a service that aggregates a Product entity from diff
 * READER 
 (username: "reader", password: "readerPassword")
 
-#Authentication
+# Authentication
 * Both GET and PUT endpoints are available to ADMIN users
 * Only GET endpoints are available to READER users
 
