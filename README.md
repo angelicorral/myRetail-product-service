@@ -71,6 +71,10 @@ mvn spring-boot:run -Dspring.profiles.active=local
 http://localhost:8080/info
 ```
 
+# Test Data
 
+1. Use id 13860428 for happy path
+1. Use id 12954218 for a record that exists in target redsky but not in cassandra
+1. Use id unknown for a record that doesn't exists anywhere
 
 
