@@ -30,6 +30,10 @@ public class ProductController {
 
         // sanitize input
         String trimmedId = StringUtils.trimToEmpty(id);
+        
+        if(!ProductValidator.isValidId(trimmedId)) {
+            return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Id"));
+        }
         return productService.getProduct(trimmedId)
                 .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found")));
     }
@@ -39,6 +43,10 @@ public class ProductController {
 
         // sanitize input
         String trimmedId = StringUtils.trimToEmpty(id);
+        
+        if(!ProductValidator.isValidId(trimmedId)) {
+            return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Id"));
+        }
 
         // validate if id of product is same
         if (!ProductValidator.isValidProduct(trimmedId, product)) {

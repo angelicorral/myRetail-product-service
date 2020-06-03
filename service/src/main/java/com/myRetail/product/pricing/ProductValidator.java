@@ -4,8 +4,11 @@ import com.myRetail.product.domain.Currency;
 import com.myRetail.product.domain.Product;
 import java.math.BigDecimal;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 public final class ProductValidator {
+
+    private static final Pattern ID_PATTERN = Pattern.compile("^[a-zA-Z0-9_.-]*$");
 
     private static Predicate<Product> isValidPriceValues = (p) -> {
         return p.getCurrentPrice().getValue() != null && BigDecimal.ZERO.compareTo(p.getCurrentPrice().getValue()) != 0
@@ -45,4 +48,11 @@ public final class ProductValidator {
         return true;
     }
 
+    public static boolean isValidId(String id) {
+        if (ID_PATTERN.matcher(id).matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

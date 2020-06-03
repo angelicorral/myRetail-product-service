@@ -83,6 +83,20 @@ public class ProductControllerTest {
     }
 
     @Test
+    public void testGetProduct_invalidId() {
+
+        webTestClient.get()
+                .uri("/v1/products/mockId^^")
+                .header("Authorization",
+                        "Basic " + Base64Utils
+                                .encodeToString(("reader" + ":" + "readerPassword").getBytes(StandardCharsets.UTF_8)))
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus()
+                .isBadRequest();
+    }
+    
+    @Test
     public void testGetProduct_notFoundPath() {
 
         when(productService.getProduct(eq("unknown"))).thenReturn(Mono.empty());
@@ -224,5 +238,6 @@ public class ProductControllerTest {
                 .isBadRequest();
 
     }
+    
 
 }
