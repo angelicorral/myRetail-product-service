@@ -1,7 +1,7 @@
 # myRetail-product-service
 myRetail Product Service is a service that aggregates a Product entity from different product sources
 
-# Authorization
+# Authentication
 *  This app uses Basic Authentication.
 
 #####  Roles:
@@ -10,7 +10,7 @@ myRetail Product Service is a service that aggregates a Product entity from diff
 * READER 
 (username: "reader", password: "readerPassword")
 
-# Authentication
+# Authorization
 * Both GET and PUT endpoints are available to ADMIN users
 * Only GET endpoints are available to READER users
 
