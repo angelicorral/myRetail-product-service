@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="info" packages="com.bestbuy.recs.spring.logging">
   <Properties>
-    <Property name="APP_NAME">configuration-service</Property>
+    <Property name="APP_NAME">myRetail-product-service</Property>
   </Properties>
   <Appenders>
     <Console name="application-console-appender" target="SYSTEM_OUT">
@@ -10,7 +9,7 @@
     </Console>
   </Appenders>
   <Loggers>
-    <AsyncLogger name="com.bestbuy.recs" level="DEBUG" />
+    <AsyncLogger name="com.myRetail.product" level="DEBUG" />
     <AsyncRoot level="WARN">
       <AppenderRef ref="application-console-appender"/>
     </AsyncRoot>
